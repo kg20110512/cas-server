@@ -123,19 +123,38 @@
     <property name="password" value="root" />
     </bean>-->
 
-    <!-- 指定druid数据源 -->
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-        <!--<property name="driverClass" value="com.mysql.jdbc.Driver" />-->
+    <!--<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        &lt;!&ndash;<property name="driverClass" value="com.mysql.jdbc.Driver" />&ndash;&gt;
         <property name="url" value="jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=UTF-8" />
         <property name="username" value="root" />
         <property name="password" value="root" />
+    </bean>-->
+
+    <!-- cp30数据源 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
+        <property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.10.130:1521:landres" />
+        <property name="user" value="gtruntime" />
+        <property name="password" value="gtrumtime" />
     </bean>
+
+    <!-- 指定druid数据源 -->
+    <!--<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="url" value="jdbc:oracle:thin:@192.168.10.130:1521:landres" />
+        <property name="username" value="gtruntime" />
+        <property name="password" value="gtrumtime" />
+    </bean>-->
 
     <!-- 访问本地数据库 -->
     <bean id="dbAuthHandler"
           class="org.jasig.cas.adaptors.jdbc.QueryDatabaseAuthenticationHandler"
           p:dataSource-ref="dataSource"
-          p:sql="SELECT u.`password` FROM `sec_user` u WHERE u.`account` = ?" />
+          p:sql="select spassword from sa_opperson where sloginname= 'system2'"
+          p:passwordEncoder-ref="passwordEncoder"/>
+
+    <bean id="passwordEncoder" class="org.jasig.cas.authentication.handler.DefaultPasswordEncoder">
+        <constructor-arg value="MD5"/>
+    </bean>
 
     <!-- Required for proxy ticket mechanism -->
     <bean id="proxyPrincipalResolver"
