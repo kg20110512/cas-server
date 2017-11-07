@@ -79,6 +79,10 @@ public class QueryDatabaseAuthenticationHandler extends AbstractJdbcUsernamePass
             }
         } catch (final DataAccessException e) {
             throw new PreventedException("SQL exception while executing query for " + username, e);
+        } catch (Exception e){
+            logger.info(e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return createHandlerResult(credential, new SimplePrincipal(username), null);
     }
