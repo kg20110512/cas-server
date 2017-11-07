@@ -130,27 +130,51 @@
         <property name="password" value="root" />
     </bean>-->
 
-    <!-- cp30数据源 -->
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+    <!-- cp30数据源 oracle 38 -->
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
+        <property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.10.38:1525:orcl" />
+        <property name="user" value="rzzhsp" />
+        <property name="password" value="rzzhsp" />
+    </bean> -->
+
+    <!-- cp30数据源 oracle 130 -->
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
         <property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.10.130:1521:landres" />
         <property name="user" value="gtruntime" />
         <property name="password" value="gtrumtime" />
-    </bean>
+    </bean>-->
 
-    <!-- 指定druid数据源 -->
+    <!-- 指定druid数据源 oracle -->
     <!--<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="url" value="jdbc:oracle:thin:@192.168.10.130:1521:landres" />
         <property name="username" value="gtruntime" />
         <property name="password" value="gtrumtime" />
     </bean>-->
 
+    <!-- 指定druid数据源 oracle -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close"
+          p:url="jdbc:oracle:thin:@192.168.10.130:1521:LANDRES"
+          p:username="gtruntime"
+          p:password="gtruntime"/>
+
+
+
     <!-- 访问本地数据库 -->
-    <bean id="dbAuthHandler"
+    <!--<bean id="dbAuthHandler"
           class="org.jasig.cas.adaptors.jdbc.QueryDatabaseAuthenticationHandler"
           p:dataSource-ref="dataSource"
-          p:sql="select spassword from sa_opperson where sloginname= 'system2'"
-          p:passwordEncoder-ref="passwordEncoder"/>
+          p:sql="select spassword from sa_opperson where sloginname = ? "
+          p:passwordEncoder-ref="passwordEncoder"/>-->
+
+    <bean id="dbAuthHandler" class="org.jasig.cas.adaptors.jdbc.SearchModeSearchDatabaseAuthenticationHandler"
+          p:passwordEncoder-ref="passwordEncoder"
+          p:dataSource-ref="dataSource"
+          p:fieldPassword="spassword"
+          p:fieldUser="sloginname"
+          p:tableUsers="gtruntime.sa_opperson"/>
+
 
     <bean id="passwordEncoder" class="org.jasig.cas.authentication.handler.DefaultPasswordEncoder">
         <constructor-arg value="MD5"/>
