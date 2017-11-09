@@ -110,25 +110,11 @@
           class="org.jasig.cas.authentication.AcceptUsersAuthenticationHandler">
         <property name="users">
             <map>
-                <entry key="casuser" value="Mellon"/>
+                <entry key="casuser" value="123456"/>
             </map>
         </property>
     </bean>
 
-    <!-- 指定c3p0数据源 -->
-    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-    <property name="driverClass" value="com.mysql.jdbc.Driver" />
-    <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/myProject?useUnicode=true&amp;characterEncoding=UTF-8" />
-    <property name="user" value="root" />
-    <property name="password" value="root" />
-    </bean>-->
-
-    <!--<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-        &lt;!&ndash;<property name="driverClass" value="com.mysql.jdbc.Driver" />&ndash;&gt;
-        <property name="url" value="jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=UTF-8" />
-        <property name="username" value="root" />
-        <property name="password" value="root" />
-    </bean>-->
 
     <!-- cp30数据源 oracle 38 -->
     <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -146,12 +132,6 @@
         <property name="password" value="gtrumtime" />
     </bean>-->
 
-    <!-- 指定druid数据源 oracle -->
-    <!--<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-        <property name="url" value="jdbc:oracle:thin:@192.168.10.130:1521:landres" />
-        <property name="username" value="gtruntime" />
-        <property name="password" value="gtrumtime" />
-    </bean>-->
 
     <!-- 指定druid数据源 oracle -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close"
