@@ -20,6 +20,8 @@ package org.jasig.cas.ticket.support;
 
 import org.jasig.cas.ticket.ExpirationPolicy;
 import org.jasig.cas.ticket.TicketState;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
 
 import java.io.Serializable;
@@ -43,6 +45,8 @@ public final class MultiTimeUseOrTimeoutExpirationPolicy implements ExpirationPo
     /** The maximum number of uses before expiration. */
     private final int numberOfUses;
 
+    Logger logger = LoggerFactory.getLogger(getClass());
+
 
     /** No-arg constructor for serialization support. */
     private MultiTimeUseOrTimeoutExpirationPolicy() {
@@ -65,8 +69,17 @@ public final class MultiTimeUseOrTimeoutExpirationPolicy implements ExpirationPo
     }
 
     public boolean isExpired(final TicketState ticketState) {
-        return (ticketState == null)
-            || (ticketState.getCountOfUses() >= this.numberOfUses)
-            || (System.currentTimeMillis() - ticketState.getLastTimeUsed() >= this.timeToKillInMilliSeconds);
+        logger.debug("=== TicketGrantingTicketExpirationPolicy check isExpired begin  ===");
+        boolean b1 = (ticketState == null);
+        boolean b2 = (ticketState.getCountOfUses() >= this.numberOfUses);
+        boolean b3 = (System.currentTimeMillis() - ticketState.getLastTimeUsed() >= this.timeToKillInMilliSeconds);
+        logger.debug("=== (ticketState == null) = {} ===", b1);
+        logger.debug("=== (ticketState.getCountOfUses() >= this.numberOfUses) = {} ===", b2);
+        logger.debug("=== (System.currentTimeMillis() - ticketState.getLastTimeUsed() >= this.timeToKillInMilliSeconds) = {} ===", b3);
+        logger.debug("=== this.timeToKillInMilliSeconds = {} ===", this.timeToKillInMilliSeconds);
+        logger.debug("=== TicketGrantingTicketExpirationPolicy check isExpired begin  ===");
+        return b1 || b2 || b3;
+
     }
+
 }

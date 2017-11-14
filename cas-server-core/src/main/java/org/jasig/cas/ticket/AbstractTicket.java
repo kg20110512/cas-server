@@ -24,6 +24,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
 
 /**
@@ -46,6 +48,7 @@ import org.springframework.util.Assert;
 public abstract class AbstractTicket implements Ticket, TicketState {
 
     private static final long serialVersionUID = -8506442397878267555L;
+    Logger logger = LoggerFactory.getLogger(getClass());
 
     /** The ExpirationPolicy this ticket will be following. */
     @Lob
@@ -143,8 +146,14 @@ public abstract class AbstractTicket implements Ticket, TicketState {
     }
 
     public final boolean isExpired() {
+        logger.debug("=== Ticket Type {} execute method isExpired ===", getClass());
+        logger.debug("=== Ticket expirationPolicy type ={} ===", this.expirationPolicy.getClass());
         boolean b1 = this.expirationPolicy.isExpired(this);
+        logger.debug("=== Ticket expirationPolicy check isExpired = {} ===", b1);
+        logger.debug("=== GrantingTicket check isExpired begin ===");
         boolean b2 = getGrantingTicket() != null && getGrantingTicket().isExpired();
+        logger.debug("=== GrantingTicket check (isExpired() && getGrantingTicket()) = {} ===" , b2);
+        logger.debug("=== GrantingTicket check isExpired over ===");
         boolean b3 = isExpiredInternal();
         return  (b1 || b2 || b3);
     }

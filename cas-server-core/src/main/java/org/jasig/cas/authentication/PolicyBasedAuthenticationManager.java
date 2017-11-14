@@ -210,6 +210,15 @@ public class PolicyBasedAuthenticationManager implements AuthenticationManager {
                     try {
                         final HandlerResult result = handler.authenticate(credential);
                         builder.addSuccess(handler.getName(), result);
+
+                        //put password in builder to build credential with username and password
+                        if (credential instanceof UsernamePasswordCredential){
+                                builder.addAttribute("username", ((UsernamePasswordCredential) credential).getUsername());
+                                builder.addAttribute("password", ((UsernamePasswordCredential) credential).getPassword());
+//                                principal.getAttributes().put("username", ((UsernamePasswordCredential) credential).getUsername());
+//                                principal.getAttributes().put("password", ((UsernamePasswordCredential) credential).getPassword());
+                        }
+
                         logger.info("{} successfully authenticated {}", handler.getName(), credential);
                         resolver = this.handlerResolverMap.get(handler);
                         if (resolver == null) {
@@ -225,6 +234,8 @@ public class PolicyBasedAuthenticationManager implements AuthenticationManager {
                         // require principal to be non-null
                         if (principal != null) {
                             builder.setPrincipal(principal);
+
+
                         }
                         if (this.authenticationPolicy.isSatisfiedBy(builder.build())) {
                             return builder;

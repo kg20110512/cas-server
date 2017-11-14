@@ -85,7 +85,7 @@
   <bean
       id="serviceLogoutViewController"
       class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-      p:viewName="serviceLogoutView"/>
+      p:viewName="servicelLogoutView"/>
 
   <bean id="addRegisteredServiceSimpleFormController"
         class="org.jasig.cas.services.web.RegisteredServiceSimpleFormController"

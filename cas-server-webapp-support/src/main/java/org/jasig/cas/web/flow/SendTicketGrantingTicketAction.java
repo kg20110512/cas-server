@@ -53,7 +53,7 @@ public final class SendTicketGrantingTicketAction extends AbstractAction {
         if (ticketGrantingTicketId == null) {
             return success();
         }
-
+        //add cookie with name [CASTGC]
         this.ticketGrantingTicketCookieGenerator.addCookie(WebUtils.getHttpServletRequest(context), WebUtils
             .getHttpServletResponse(context), ticketGrantingTicketId);
 
