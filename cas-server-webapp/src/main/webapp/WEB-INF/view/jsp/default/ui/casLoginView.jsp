@@ -20,12 +20,12 @@
 --%>
 <jsp:directive.include file="includes/top.jsp" />
 
-<c:if test="${not pageContext.request.secure}">
+<%--<c:if test="${not pageContext.request.secure}">
   <div id="msg" class="errors">
     <h2>Non-secure Connection</h2>
     <p>You are currently accessing CAS over a non-secure connection.  Single Sign On WILL NOT WORK.  In order to have single sign on work, you MUST log in over HTTPS.</p>
   </div>
-</c:if>
+</c:if>--%>
 
 <div class="box" id="login">
   <form:form method="post" id="fm1" commandName="${commandName}" htmlEscape="true">
@@ -76,17 +76,17 @@
   </form:form>
 </div>
   
-<div id="sidebar">
+<%--<div id="sidebar">
   <div class="sidebar-content">
     <p><spring:message code="screen.welcome.security" /></p>
-    
+
     <div id="list-languages">
       <%final String queryString = request.getQueryString() == null ? "" : request.getQueryString().replaceAll("&locale=([A-Za-z][A-Za-z]_)?[A-Za-z][A-Za-z]|^locale=([A-Za-z][A-Za-z]_)?[A-Za-z][A-Za-z]", "");%>
       <c:set var='query' value='<%=queryString%>' />
       <c:set var="xquery" value="${fn:escapeXml(query)}" />
-      
+
       <h3>Languages:</h3>
-      
+
       <c:choose>
         <c:when test="${not empty requestScope['isMobile'] and not empty mobileCss}">
           <form method="get" action="login?${xquery}">
@@ -147,6 +147,6 @@
       </c:choose>
     </div>
   </div>
-</div>
+</div>--%>
 
 <jsp:directive.include file="includes/bottom.jsp" />

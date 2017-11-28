@@ -61,26 +61,18 @@ a:active{color:#000;}
 
 
 #rootview{height:100%;width:100%;}
-#login-logo{background:url(../images-rz/login_logo.png) 50px 70px no-repeat;height:125px;}
-#center{background:#2da4cc url(../images-rz/login_bg.png) left top repeat-y; height:450px;}
+#login-logo{background:url(login_logo.png) 50px 70px no-repeat;height:125px;}
+#center{background:#2da4cc url(login_bg.png) left top repeat-y; height:450px;}
 
 #loginwin{position:absolute;height:300px;width:350px;background:white;top:50%;margin-top:-160px;right:100px;text-align:center;background-color: rgba(255,255,255,0.5);}
 #logintitle{height:70px;line-height:70px;font-family: "微软雅黑";font-size:14px;}
-#loginuser,#loginpass{border:1px solid #ccc;height:25px; width:270px;background:#eee;border-radius:2px;margin:10px auto;}
-#loginuser input{background:url(../images-rz/login_yonghuming.png) no-repeat;padding-left:30px;border:none;outline:none;height:25px;}
-#loginpass input{background:url(../images-rz/login_mima.png) no-repeat;padding-left:30px;border:none;outline:none;height:25px;}
+#loginuser,#loginpass{border:1px solid #ccc;height:25px; width:220px;background:#eee;border-radius:2px;margin:10px auto;}
+#loginuser input{background:url(login_yonghuming.png) no-repeat;padding-left:30px;border:none;outline:none;height:25px;}
+#loginpass input{background:url(login_mima.png) no-repeat;padding-left:30px;border:none;outline:none;height:25px;}
 
 #loginremenber{margin-bottom:60px;}
 
-#loginsubmit{background:url(../images-rz/login_bt.png) no-repeat;width:267px;height:50px;color:white;padding-bottom:20px; border:none;}
+#loginsubmit{background:url(login_bt.png) no-repeat;width:267px;height:50px;color:white;padding-bottom:20px; border:none;}
 
 
 #bottom{text-align:center;line-height:40px;height:150px;}
-
-
-/* cas */
-
-#fm1 .row .btn-submit { border-width: 2px; padding: 3px; margin-right: 4px; }
-#fm1 .row .btn-reset { border: 0; background: none; color: #777; text-transform: lowercase; border-left: 1px solid #ddd; }
-#fm1 .row .btn-submit:hover,
-#fm1 .row .btn-reset:hover { cursor: pointer; }

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>日照市国土资源局</title>
+<link href="images/style.css" rel="stylesheet" type="text/css" />
+<script src="images/jquery.js"></script>
+</head>
+
+<body>
+<div id="rootview">
+<div id="top">
+<div id="login-logo"></div>
+</div>
+<div id="center">
+    <div id="loginwin">
+       <div id="logintitle">用 户 登 录</div>
+       <div id="loginuser">
+       <input type="text" id="username" name="username" placeholder="用户名"  />
+       </div>
+       <div id="loginpass">
+       <input type="password" id="password" name="password" placeholder="密码"  />
+       </div>
+       <div id="loginremenber">
+       <input type="checkbox" id="checkbox01" />
+       <label for="checkbox01">记住用户名</label>
+       <input type="checkbox" id="checkbox02" />
+       <label for="checkbox02">记住密码</label>
+       </div>
+       <div id="div-sub"><input type="button" id="loginsubmit" value="登 录" /></div>
+    </div>
+</div>
+<div id="bottom">版权所有：日照市国土资源局</div>
+</div>
+<script language="javascript">
+debugger;
+$("#center").height($(window).height()-$("#login-logo").outerHeight(true)-$("#bottom").outerHeight(true));
+			if($("#center").height() < 450 ){
+				$("#center").css({"background-position":"0px -80px"});
+			}
+</script>
+</body>
+</html>
