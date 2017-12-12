@@ -58,9 +58,9 @@
                    | set its name to something other than its default name (typically the simple class name).
                    -->
                 <entry key-ref="proxyAuthenticationHandler" value-ref="proxyPrincipalResolver" />
-                <entry key-ref="primaryAuthenticationHandler" value-ref="primaryPrincipalResolver" />
+                <!--<entry key-ref="primaryAuthenticationHandler" value-ref="primaryPrincipalResolver" />-->
                 <!-- key-ref指定自己的本地数据库访问 -->
-                <!--<entry key-ref="dbAuthHandler" value-ref="primaryPrincipalResolver"/>-->
+                <entry key-ref="dbAuthHandler" value-ref="primaryPrincipalResolver"/>
             </map>
         </constructor-arg>
 
@@ -103,14 +103,14 @@
        | * org.jasig.cas.adaptors.x509.authentication.handler.support.X509CredentialsAuthenticationHandler
        | * org.jasig.cas.support.spnego.authentication.handler.support.JCIFSSpnegoAuthenticationHandler
        -->
-    <bean id="primaryAuthenticationHandler"
+    <!--<bean id="primaryAuthenticationHandler"
           class="org.jasig.cas.authentication.AcceptUsersAuthenticationHandler">
         <property name="users">
             <map>
                 <entry key="casuser" value="123456"/>
             </map>
         </property>
-    </bean>
+    </bean>-->
 
 
     <!-- cp30数据源 oracle 38 -->

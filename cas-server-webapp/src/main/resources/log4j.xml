@@ -98,11 +98,11 @@
     </logger>
 
     <logger name="org.springframework.webflow">
-        <level value="DEBUG" />
+        <level value="WARN" />
     </logger>
 
     <logger name="org.jasig" additivity="true">
-        <level value="DEBUG" />
+        <level value="WARN" />
         <appender-ref ref="cas" />
     </logger>
 

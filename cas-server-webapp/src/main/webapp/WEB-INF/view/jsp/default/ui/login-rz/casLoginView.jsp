@@ -50,9 +50,22 @@
   <title>日照市国土资源局</title>
   <spring:theme code="standard.custom.css.file" var="customCssFile"/>
   <link rel="stylesheet" href="<c:url value="${customCssFile}" />" />
-  <%--<link rel="stylesheet" type="text/css" href="images/style.css"  />--%>
-  <script type="text/javascript" src="images/jquery.js"></script>
+  <%--<link rel="stylesheet" type="text/css" href="/cas/cas.css" />--%>
+  <script type="text/javascript" src="/js/jquery-1.4.2.js"></script>
   <%--<script type="text/javascript" src="jquery-ui-1.8.18.custom.min.js"></script>--%>
+  <script type="text/javascript">
+
+
+      $(function(){
+          document.onkeydown = function(e){
+              var ev = document.all ? window.event : e;
+              if(ev.keyCode==13) {
+                  $("#fm1").submit();
+              }
+          }
+      });
+
+  </script>
 
 </head>
 
